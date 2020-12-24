@@ -1,0 +1,6 @@
+Emoji Translator
+Build a browser extension that will translate any provided sentence into a combination of emojis. You can use the extension to automatically change texts that a user sends via messaging or email or even use it to aid in writing blog posts.
+
+Suggested Language: JavaScript
+Suggested Frameworks/Tools:
+Example Implementation:

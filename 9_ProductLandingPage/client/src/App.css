@@ -1,0 +1,79 @@
+html{
+  scroll-behavior: smooth;
+}
+.App {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.initContainer{
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 100%;
+}
+.Slide{
+  position: relative;
+  float: left;
+  width: 100%;
+  overflow: hidden;
+}
+*{
+  padding: 0;
+  margin: 0;
+}
+.init {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: auto;
+}
+.init-title{
+  position: relative;
+  width: calc(100% - 40px);
+  margin: 20px;
+  font-weight: 400;
+}
+.init-description{
+  position: relative;
+  width: calc(100% - 70px);
+  margin: 35px;
+  font-weight: 400;
+}
+.init-price{
+  position: relative;
+  width: calc(100% - 70px);
+  margin: 35px;
+  font-weight: 400;
+}
+.init-price b{
+  border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.init-date{
+  position: relative;
+  width: calc(100% - 20px);
+  margin: 10px;
+  font-weight: 400;
+  color:rgba(0, 0, 0, 0.7);
+}
+.init button {
+  padding: 8px 20px;
+  background: #ececec;
+  border: solid 1px #e0e0e0;
+  border-radius: 4px;
+  margin-top: 25px;
+  -webkit-box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.08);
+  box-shadow: 0px 0px 7px -1px rgba(0,0,0,0.08);
+  outline: none;
+  cursor: pointer;
+}
+.init button:hover{
+  border-color: #bdbdbd;
+}

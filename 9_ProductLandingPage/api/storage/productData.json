@@ -1,0 +1,181 @@
+{
+  "init": {
+    "name": "MacBook Air",
+    "price": 999,
+    "currency": "$",
+    "description": "Our thinnest, lightest notebook, completely transformed by the Apple M1 chip. CPU speeds up to 3.5x faster. GPU speeds up to 5x faster. Our most advanced Neural Engine for up to 9x faster machine learning. The longest battery life ever in a MacBook Air. And a silent, fanless design. This much power has never been this ready to go.",
+    "availableData": [11,11,2020]
+  },
+    "slides": {
+      "introduction" :{
+        "title": {
+          "text":"Small chip. Giant leap.",
+          "colors": ["unset"],
+          "style": "big left"
+        },
+        "descType": "explication",
+        "desc": {
+          "text":"It’s here. Our first chip designed specifically for Mac. Packed with an astonishing 16 billion transistors, the Apple M1 system on a chip (SoC) integrates the CPU, GPU, Neural Engine, I/O, and so much more onto a single tiny chip. With incredible performance, custom technologies, and industry-leading power efficiency,1 M1 is not just a next step for Mac — it’s another level entirely.",
+          "style": "left sixtyWidth medium grey"
+        },
+        "link": {
+          "title": "Learn more about M1",
+          "href": "/M1",
+          "style": "left classic"
+        },
+        "bgColor": "#000",
+        "textColor": "#fff",
+        "image": {
+          "url": "m1_processor.jpg",
+          "style": "center right fullOpacity"
+        }
+      },
+      "M1" :{
+        "title": {
+          "text":"8-core CPU Devours tasks. /Sips battery.",
+          "colors": ["unset","#88fd88"],
+          "style": "center big"
+        },
+        "descType": "explication",
+        "desc": {
+          "text":"M1 has the fastest CPU we’ve ever made. With that kind of processing speed, MacBook Air can take on new extraordinarily intensive tasks like professional-quality editing and action-packed gaming. But the 8‑core CPU on M1 isn‘t just up to 3.5x faster than the previous generation2 — it balances high-performance cores with efficiency cores that can still crush everyday jobs while using just a tenth of the power.",
+          "style": "center"
+        },
+        "link": {
+          "title": "See how M1 redefines speed",
+          "href": "/M1_Speed",
+          "style": "center"
+        },
+        "bgColor": "#000",
+        "textColor": "#fff",
+        "image": {
+          "url": "finalCut.jpg",
+          "style": ""
+        }
+      },
+      "M1_Speed" :{
+        "title": {
+          "text":"8-core GPU\n Plays /hard.\n /Works/ wonders.",
+          "colors": ["#fff","#e74c3c", "#fff","#10ac84"],
+          "style": "left huge"
+        },
+        "descType": "stat",
+        "desc": {
+          "text":["Up to","5X","faster graphics"],
+          "style": ""
+        },
+        "link": {
+          "title": "See how M1 revs up graphics",
+          "href": "/M1_Speed",
+          "style": "left"
+        },
+        "bgColor": "rgb(29 52 95)",
+        "textColor": "#fff",
+        "image": {
+          "url": "civ6.webp",
+          "style": ""
+        }
+      },
+      "QuickCards" :{
+        "title": {
+          "text":"See what it can do for you",
+          "colors": ["#fff"],
+          "style": "left medium"
+        },
+        "descType": "gallery",
+        "desc": {
+          "text":"",
+          "style": ""
+        },
+        "galleryContent": [
+          {
+            "url": "apps.png",
+            "title": "Biggest collection of apps ever",
+            "description": "Run powerful apps built for M1. All your existing apps work thanks to Rosetta 2. And for the first time, you can use your favorite iPhone and iPad apps directly on macOS Big Sur. Altogether you’ll have access to the biggest collection of apps ever for Mac."
+          }
+        ],
+        "link": {
+          "title": "See all the available apps",
+          "href": "/Apps",
+          "style": "left"
+        },
+        "bgColor": "#000",
+        "textColor": "#fff",
+        "image": {
+          "url": "",
+          "style": ""
+        }
+      },
+      "Prices" :{
+        "title": {
+          "text":"Pricing",
+          "colors": ["#000"],
+          "style": "center medium underline"
+        },
+        "descType": "prices",
+        "desc": {
+          "text":"",
+          "style": ""
+        },
+        "tables":[
+          {
+            "pictureUrl": "MacBookAir_classic.png",
+            "title": "MacBook Air" ,
+            "pricing": ["999","83.25","12"],
+            "currency": "$",
+            "specs": [
+              "13.3-inch Retina display",
+              "Apple M1 chip",
+              "Up to 16GB memory",
+              "Up to 2TB storage",
+              "Up to 18 hours battery life",
+              "Touch ID"
+            ],
+            "ShowLearnMore": false
+          },
+          {
+            "pictureUrl": "MacBookPro_13.png",
+            "title": "MacBook Pro 13\"" ,
+            "pricing": ["1299","108.25","12"],
+            "currency": "$",
+            "specs": [
+              "13.3-inch Retina display",
+              "Apple M1 chip",
+              "Also available with Intel Core i5 or i7 processor",
+              "Up to 16GB memory",
+              "Up to 2TB storage",
+              "Up to 20 hours battery life",
+              "Touch Bar and Touch ID"
+            ],
+            "ShowLearnMore": true
+          },
+          {
+            "pictureUrl": "MacBookPro_16.png",
+            "title": "MacBook Pro 16\"" ,
+            "pricing": ["2399","199.91","12"],
+            "currency": "$",
+            "specs": [
+              "16-inch Retina display",
+              "Intel Core i7 or i9 processor",
+              "Up to 64GB memory",
+              "Up to 8TB storage",
+              "Up to 11 hours battery life",
+              "Touch Bar and Touch ID"
+            ],
+            "ShowLearnMore": true
+          }
+        ],
+        "link": {
+          "title": "Are you a student ?",
+          "href": "/Students",
+          "style": "left"
+        },
+        "bgColor": "#fff",
+        "textColor": "#000",
+        "image": {
+          "url": "",
+          "style": ""
+        }
+      }
+    }
+  }

@@ -1,0 +1,6 @@
+﻿  main.cpp
+C:\Users\victo\Documents\Projects\100ProjectsOfCode\100 Projects\59_CodecSoftware\CodecSoftware\main.cpp(25,8): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+C:\Users\victo\Documents\Projects\100ProjectsOfCode\100 Projects\59_CodecSoftware\CodecSoftware\main.cpp(33,9): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+C:\Users\victo\Documents\Projects\100ProjectsOfCode\100 Projects\59_CodecSoftware\CodecSoftware\main.cpp(44,17): warning C4244: '=' : conversion de 'double' en 'int', perte possible de données
+C:\Users\victo\Documents\Projects\100ProjectsOfCode\100 Projects\59_CodecSoftware\CodecSoftware\main.cpp(176,20): warning C4018: '<' : incompatibilité signed/unsigned
+  CodecSoftware.vcxproj -> C:\Users\victo\Documents\Projects\100ProjectsOfCode\100 Projects\59_CodecSoftware\CodecSoftware\Debug\CodecSoftware.exe
