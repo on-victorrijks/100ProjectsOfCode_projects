@@ -7,48 +7,65 @@ using namespace std;
 string alphabet = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' };
 const char* algorithms[2] = { "Caesar", "RSA" };
 
-// Get prime
-bool isPrime(int n) {
-
-	// STEP 1
-	int nmin = n - 1;
-
-	double temp_k = 1;
-	double c = pow(2.00, temp_k);
-
-	while (std::fmod(nmin,c) == 0) {
-		temp_k += 1;
-		c = pow(2.00, temp_k);
-	}
-
-	double k = temp_k - 1;
-	int m = nmin / pow(2.00,k);
-	
-	// STEP 2
-	// 1 < a < n-1
-	int a = 2;
-
-	// STEP 3
-	// bo
-	int bo = std::fmod(pow(a, m), n);
-	if (bo == -1 || bo == 1) {
+bool isPrime(int n){
+	// FROM : https://www.geeksforgeeks.org/c-program-to-check-prime-number/
+	// Corner cases 
+	if (n <= 1)
+		return false;
+	if (n <= 3)
 		return true;
-	}
 
+	// This is checked so that we can skip 
+	// middle five numbers in below loop 
+	if (n % 2 == 0 || n % 3 == 0)
+		return false;
 
-	// bn
-	int bn = bo;
-	while (true) {
-		bn = std::fmod(pow(bn, 2), n);
-		cout << bn;
-		if (bn == nmin) {
-			return true;
-		}
-		if (bn == -1) {
-			return true;
-		} else if (bn == 1) {
+	for (int i = 5; i * i <= n; i = i + 6)
+		if (n % i == 0 || n % (i + 2) == 0)
 			return false;
+
+	return true;
+}
+
+int getPrime(int except) {
+	while (true) {
+		int r = rand();
+		if (isPrime(r) && except != r) {
+			return r;
 		}
+	}
+}
+
+int getLCM(int n1, int n2) {
+
+
+	if (n1 > n2) {
+
+		int k = 1;
+		int temp = n1;
+		while (true) {
+			if (temp % n2 == 0) {
+				return temp;
+			}
+			k += 1;
+			temp = n1 * k;
+		}
+
+
+	} else if (n1 < n2) {
+
+		int k = 1;
+		int temp = n2;
+		while (true) {
+			if (temp % n1 == 0) {
+				return temp;
+			}
+			k += 1;
+			temp = n2 * k;
+		}
+
+	} else {
+		return n1;
 	}
 
 }
@@ -130,93 +147,105 @@ int main() {
 	string enteredText;
 	int numberOfAlgorithms = sizeof(algorithms) / sizeof(algorithms[0]);
 	float shouldDecrypt = false;
+	bool run_main = false;
+	srand(time(NULL));
 
-	if (isPrime(307)) {
-		cout << "prime" << endl;
-	}
-	else {
-		cout << "not prime" << endl;
-	}
+	// TEST
 
-	welcome();
-	showAlgorithms();
 
-	// User choses algorithm
-	while (true) {
-		cout << "Enter the chosen algorithm index: ";
-		cin >> chosenAlgoIndex;
+	int p, q, n, keyLength, lcm;
 
-		if (chosenAlgoIndex < numberOfAlgorithms && chosenAlgoIndex >= 0) {
-			break;
+	p = getPrime(-1);
+	q = getPrime(p);
+	n = p * q;
+	lcm = getLCM((p - 1), (q - 1));
+
+
+	cout << p << " : " << q << endl;
+	cout << n << endl;
+
+	// TEST
+
+	if (run_main) {
+
+		welcome();
+		showAlgorithms();
+
+		// User choses algorithm
+		while (true) {
+			cout << "Enter the chosen algorithm index: ";
+			cin >> chosenAlgoIndex;
+
+			if (chosenAlgoIndex < numberOfAlgorithms && chosenAlgoIndex >= 0) {
+				break;
+			}
 		}
-	}
 
-	// User choses if he wants to encrypt/decrypt
-	while (true){
-		cout << "Do you want to encrypt a text ? (Y/N): ";
-		cin >> shouldDecryptLetter;
+		// User choses if he wants to encrypt/decrypt
+		while (true) {
+			cout << "Do you want to encrypt a text ? (Y/N): ";
+			cin >> shouldDecryptLetter;
 
-		if (shouldDecryptLetter == 'Y') {
-			shouldDecrypt = true;
-			break;
-		} else if (shouldDecryptLetter == 'N') {
-			shouldDecrypt = false;
-			break;
+			if (shouldDecryptLetter == 'Y') {
+				shouldDecrypt = true;
+				break;
+			}
+			else if (shouldDecryptLetter == 'N') {
+				shouldDecrypt = false;
+				break;
+			}
 		}
-	}
 
-	// User enters text
-	cout << "Enter the text: ";
-	cin.ignore();
-	getline(cin, enteredText);
+		// User enters text
+		cout << "Enter the text: ";
+		cin.ignore();
+		getline(cin, enteredText);
 
-	// lower enteredText
-	for (int i = 0; i < enteredText.length(); i++) {
-		enteredText[i] = tolower(enteredText[i]);
-	}
+		// lower enteredText
+		for (int i = 0; i < enteredText.length(); i++) {
+			enteredText[i] = tolower(enteredText[i]);
+		}
 
-	// Main program
+		// Main program
 
-	string chosenAlgo_str = algorithms[chosenAlgoIndex];
-	string result = "";
+		string chosenAlgo_str = algorithms[chosenAlgoIndex];
+		string result = "";
 
-	if (chosenAlgo_str == "Caesar") {
+		if (chosenAlgo_str == "Caesar") {
 
-		// Offset
-		int decal_encryption = 0;
-		cout << "Offset: ";
-		cin >> decal_encryption;
+			// Offset
+			int decal_encryption = 0;
+			cout << "Offset: ";
+			cin >> decal_encryption;
 
+
+			if (shouldDecrypt) {
+				decal_encryption = -decal_encryption;
+			}
+
+			result = cipher_substitution(shouldDecrypt, enteredText, decal_encryption);
+
+		}
+		else if (chosenAlgo_str == "RSA") {
+
+			// ...
+
+		}
+		else {
+
+			// ...
+
+		}
 
 		if (shouldDecrypt) {
-			decal_encryption = -decal_encryption;
+			cout << "---------------Decrypted text---------------" << endl;
+		}
+		else {
+			cout << "---------------Encrypted text---------------" << endl;
 		}
 
-		result = cipher_substitution(shouldDecrypt, enteredText, decal_encryption);
-
-	} else if (chosenAlgo_str == "RSA") {
-
-		// ...
-
-	} else {
-
-		// ...
-
+		cout << result << endl;
 	}
-
-	if (shouldDecrypt) {
-		cout << "---------------Decrypted text---------------" << endl;
-	}
-	else {
-		cout << "---------------Encrypted text---------------" << endl;
-	}
-
-	cout << result << endl;
-
-
-
-
-
 
 	//system("pause");
 	return 0;
