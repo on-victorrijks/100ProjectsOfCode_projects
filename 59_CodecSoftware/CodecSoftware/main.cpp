@@ -36,39 +36,48 @@ int getPrime(int except) {
 	}
 }
 
+
+int getGCM(int n1, int n2){
+	if (n1 == 0) {
+		return n2;
+	}
+	return getGCM(n2 % n1, n1);
+}
+
+int getD(int e, int lcm) {
+	for (int d = 0;; d++){
+		if ((d * e) % lcm == 1) {
+			return d;
+		}
+	}
+}
+
 int getLCM(int n1, int n2) {
+	return abs(n1 * n2) / getGCM(n1, n2);
+}
 
+bool e_verificator(int e, int lcm) {
+	if (1 < e && getGCM(e, lcm) == 1) {
+		return true;
+	}
+	return false;
+}
 
-	if (n1 > n2) {
-
-		int k = 1;
-		int temp = n1;
-		while (true) {
-			if (temp % n2 == 0) {
-				return temp;
-			}
-			k += 1;
-			temp = n1 * k;
+int getE(int lcm) {
+	// find e
+	// 1 < e < lcm
+	// gcd( e, lcm ) == 1
+	// e and lcm are coprime
+	int potential;
+	while (true) {
+		potential = getPrime(lcm);
+		if (e_verificator(potential, lcm)) {
+			return potential;
 		}
-
-
-	} else if (n1 < n2) {
-
-		int k = 1;
-		int temp = n2;
-		while (true) {
-			if (temp % n1 == 0) {
-				return temp;
-			}
-			k += 1;
-			temp = n2 * k;
-		}
-
-	} else {
-		return n1;
 	}
 
 }
+
 
 // Caesar
 
@@ -152,17 +161,30 @@ int main() {
 
 	// TEST
 
+	// RSA_TEST
 
-	int p, q, n, keyLength, lcm;
+	int p, q, n, keyLength, lcm, e, d;
 
 	p = getPrime(-1);
 	q = getPrime(p);
 	n = p * q;
 	lcm = getLCM((p - 1), (q - 1));
+	e = 65537;
+	if (!e_verificator(e, lcm)) {
+		e = getE(lcm);
+	}
+	d = getD(e, lcm);
 
 
-	cout << p << " : " << q << endl;
-	cout << n << endl;
+	cout << "p: " << p << endl;
+	cout << "q: " << q << endl;
+	cout << "n: " << n << endl;
+	cout << "lcm: " << lcm << endl;
+	cout << "e: " << e << endl;
+	cout << "d: " << d << endl;
+
+	// generate private and public keys
+
 
 	// TEST
 
