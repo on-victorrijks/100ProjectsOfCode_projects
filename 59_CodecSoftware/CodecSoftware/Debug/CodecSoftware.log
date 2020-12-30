@@ -1,5 +1,1 @@
-﻿  main.cpp
-C:\Users\victo\Documents\Projects\100ProjectsOfCode_projects\59_CodecSoftware\CodecSoftware\main.cpp(160,12): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-C:\Users\victo\Documents\Projects\100ProjectsOfCode_projects\59_CodecSoftware\CodecSoftware\main.cpp(224,21): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\victo\Documents\Projects\100ProjectsOfCode_projects\59_CodecSoftware\CodecSoftware\main.cpp(165,15): warning C4101: 'keyLength' : variable locale non référencée
-  CodecSoftware.vcxproj -> C:\Users\victo\Documents\Projects\100ProjectsOfCode_projects\59_CodecSoftware\CodecSoftware\Debug\CodecSoftware.exe
+﻿  CodecSoftware.vcxproj -> C:\Users\victo\Documents\Projects\100ProjectsOfCode_projects\59_CodecSoftware\CodecSoftware\Debug\CodecSoftware.exe

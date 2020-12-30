@@ -7,6 +7,25 @@ using namespace std;
 string alphabet = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' };
 const char* algorithms[2] = { "Caesar", "RSA" };
 
+
+// Global functions
+int letterPosition(string elements, char element) {
+
+	int position = -1;
+	int n = elements.length();
+	int i = 0;
+	while (i < n)
+	{
+		if (elements[i] == element) {
+			position = i;
+			break;
+		}
+		i++;
+	}
+
+	return position;
+}
+
 bool isPrime(int n){
 	// FROM : https://www.geeksforgeeks.org/c-program-to-check-prime-number/
 	// Corner cases 
@@ -35,7 +54,6 @@ int getPrime(int except) {
 		}
 	}
 }
-
 
 int getGCM(int n1, int n2){
 	if (n1 == 0) {
@@ -78,25 +96,39 @@ int getE(int lcm) {
 
 }
 
+// RSA
+string rsa_encrypt(int n, int e, string text) {
+	
+	// Letters to numbers (11 to correct 00 mistakes)
+	std::string formattedText = "11";
 
-// Caesar
 
-int letterPosition(string elements, char element) {
+	for (char const& c : text) {
+		int position = letterPosition(alphabet, c);
 
-	int position = -1;
-	int n = elements.length();
-	int i = 0;
-	while (i < n)
-	{
-		if (elements[i] == element) {
-			position = i;
-			break;
+		if (position < 10) {
+			formattedText += '0';
 		}
-		i++;
+		formattedText += std::to_string(position);
+
 	}
 
-	return position;
+	cout << formattedText << endl;
+
+
+	// GMP Implementation necessary
+	int formattedText_int = std::stol(formattedText);
+
+	int encryptedText_int = fmod(pow(formattedText_int, e), n);
+
+	cout << encryptedText_int << endl;
+
+	return "";
+
 }
+
+
+// Caesar
 
 string cipher_substitution(float decrypt, string text, int decal) {
 
@@ -153,40 +185,14 @@ int main() {
 
 	int chosenAlgoIndex;
 	char shouldDecryptLetter;
+	char shouldGenerateNewKeysLetter;
 	string enteredText;
 	int numberOfAlgorithms = sizeof(algorithms) / sizeof(algorithms[0]);
 	float shouldDecrypt = false;
-	bool run_main = false;
+	float shouldGenerateNewKeys = false;
+	bool run_main = true;
 	srand(time(NULL));
 
-	// TEST
-
-	// RSA_TEST
-
-	int p, q, n, keyLength, lcm, e, d;
-
-	p = getPrime(-1);
-	q = getPrime(p);
-	n = p * q;
-	lcm = getLCM((p - 1), (q - 1));
-	e = 65537;
-	if (!e_verificator(e, lcm)) {
-		e = getE(lcm);
-	}
-	d = getD(e, lcm);
-
-
-	cout << "p: " << p << endl;
-	cout << "q: " << q << endl;
-	cout << "n: " << n << endl;
-	cout << "lcm: " << lcm << endl;
-	cout << "e: " << e << endl;
-	cout << "d: " << d << endl;
-
-	// generate private and public keys
-
-
-	// TEST
 
 	if (run_main) {
 
@@ -209,11 +215,11 @@ int main() {
 			cin >> shouldDecryptLetter;
 
 			if (shouldDecryptLetter == 'Y') {
-				shouldDecrypt = true;
+				shouldDecrypt = false;
 				break;
 			}
 			else if (shouldDecryptLetter == 'N') {
-				shouldDecrypt = false;
+				shouldDecrypt = true;
 				break;
 			}
 		}
@@ -250,7 +256,76 @@ int main() {
 		}
 		else if (chosenAlgo_str == "RSA") {
 
-			// ...
+			if (shouldDecrypt) {
+				// Decrypt RSA message
+			} else {
+				// Generate Public and private keys
+
+				// User choses if he wants to generate keys
+				while (true) {
+					cout << "Do you want to generate new keys ? (Y/N): ";
+					cin >> shouldGenerateNewKeysLetter;
+
+					if (shouldGenerateNewKeysLetter == 'Y') {
+						shouldGenerateNewKeys = true;
+						break;
+					}
+					else if (shouldGenerateNewKeysLetter == 'N') {
+						shouldGenerateNewKeys = false;
+						break;
+					}
+				}
+
+				if (shouldGenerateNewKeys) {
+					// Generate new keys
+					int p, q, n, keyLength, lcm, e, d;
+
+					p = getPrime(-1);
+					q = getPrime(p);
+					n = p * q;
+					lcm = getLCM((p - 1), (q - 1));
+					e = 65537;
+					if (!e_verificator(e, lcm)) {
+						e = getE(lcm);
+					}
+					d = getD(e, lcm);
+
+					cout << "Public KEY:" << endl;
+					cout << "n: " << n << endl;
+					cout << "e: " << e << endl;
+					cout << "Private KEY:" << endl;
+					cout << "d: " << d << endl;
+
+				}
+
+				if (shouldDecrypt) {
+					// decrypt 
+					// enter private key
+					// output decrypted message
+				} else {
+					// encrypt
+
+					// User enters n & e (public key)
+					int inp_n, inp_e;
+
+					cout << "n: ";
+					cin >> inp_n;
+					cout << "e: ";
+					cin >> inp_e;
+
+					// output encrypted message
+					result = rsa_encrypt(inp_n, inp_e,enteredText);
+
+				}
+				
+
+
+
+
+
+
+
+			}
 
 		}
 		else {
